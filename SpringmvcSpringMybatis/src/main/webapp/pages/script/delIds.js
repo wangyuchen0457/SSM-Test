@@ -19,6 +19,7 @@ $("#delBtn").click(function() {
 		},
 		success : function(msg) {
 			alert("删除成功");
+			window.location.href=ctx + '/show.do';
 		},
 		error : function() {
 			alert("删除失败")

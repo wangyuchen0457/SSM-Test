@@ -5,7 +5,7 @@ import java.util.List;
 import com.xxx.model.SmiShopInfo;
 
 /**
- * 影院店铺信息接口服务
+ * 褰遍櫌搴楅摵淇℃伅鎺ュ彛鏈嶅姟
  * 
  * @author author
  * @date 2016/02/16
@@ -13,10 +13,10 @@ import com.xxx.model.SmiShopInfo;
 public interface ISmiShopInfoService {
 
 	/**
-	 * 根据店铺的编码和密码查询店铺信息
-	 * @param shopNo 店铺编码
-	 * @param password 密码
-	 * @return 店铺信息
+	 * 鏍规嵁搴楅摵鐨勭紪鐮佸拰瀵嗙爜鏌ヨ搴楅摵淇℃伅
+	 * @param shopNo 搴楅摵缂栫爜
+	 * @param password 瀵嗙爜
+	 * @return 搴楅摵淇℃伅
 	 * @throws Exception 
 	 */
 	public SmiShopInfo getShopByNoAndPwd(String shopNo, String password) throws Exception;

@@ -11,7 +11,7 @@ import com.xxx.model.SmiShopInfo;
 import com.xxx.service.ISmiShopInfoService;
 
 /**
- * 影院店铺信息接口服务实现
+ * 褰遍櫌搴楅摵淇℃伅鎺ュ彛鏈嶅姟瀹炵幇
  * 
  * @author author
  * @date 2016/02/16
@@ -27,8 +27,8 @@ public class SmiShopInfoService implements ISmiShopInfoService {
 	@Override
 	public SmiShopInfo getShopByNoAndPwd(String shopNo, String password) throws Exception {
 		if (null == shopNo || "".equals(shopNo)) {
-			logger.warn("门店编码为null或空，请检查！");
-			throw new Exception("门店编码为空");
+			logger.warn("闂ㄥ簵缂栫爜涓簄ull鎴栫┖锛岃妫�鏌ワ紒");
+			throw new Exception("闂ㄥ簵缂栫爜涓虹┖");
 		}
 
 		return shopInfoMapper.getByNoAndPwd(password, shopNo);

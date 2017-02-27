@@ -6,11 +6,12 @@
 		<result column="shop_no" property="shopNo" jdbcType="VARCHAR" />
 		<result column="shop_name" property="shopName" jdbcType="VARCHAR" />
 		<result column="shop_type" property="shopType" jdbcType="VARCHAR" />
-		<result column="shop_password" property="shopPassword" jdbcType="VARCHAR" />
+		<result column="shop_password" property="shopPassword"
+			jdbcType="VARCHAR" />
 		<result column="note" property="note" jdbcType="VARCHAR" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		 id, shop_no, shop_name, shop_type, shop_password, note 
+		id, shop_no, shop_name, shop_type, shop_password, note
 	</sql>
 
 	<!-- 根据门店编码和密码获取门店信息 -->
@@ -18,24 +19,31 @@
 		select
 		<include refid="Base_Column_List" />
 		from smi_shop_info
-		where shop_no = #{shopNo,jdbcType=VARCHAR} and shop_password = #{password,jdbcType=VARCHAR}
+		where shop_no = #{shopNo,jdbcType=VARCHAR} and
+		shop_password = #{password,jdbcType=VARCHAR}
 	</select>
-	
+
 	<!-- 插入数据库表数据 -->
 	<insert id="addShop" parameterType="String">
-		insert into smi_shop_info 
-		set shop_no=#{shopNo,jdbcType=VARCHAR},shop_name=#{shopName,jdbcType=VARCHAR},shop_type=#{shopType,jdbcType=VARCHAR},shop_password=#{shopPassword,jdbcType=VARCHAR},note=#{note,jdbcType=VARCHAR};
+		insert into smi_shop_info
+		set
+		shop_no=#{shopNo,jdbcType=VARCHAR},shop_name=#{shopName,jdbcType=VARCHAR},shop_type=#{shopType,jdbcType=VARCHAR},shop_password=#{shopPassword,jdbcType=VARCHAR},note=#{note,jdbcType=VARCHAR};
 		<!-- (shop_no,shop_name,shop_type,shop_password,note) value (#{shopNo},#{shopName},#{shopType},#{shopPassword},#{note}) -->
 	</insert>
-	<select id="selectAll"  resultMap="BaseResultMap">
+	<select id="selectAll" resultMap="BaseResultMap">
 		select * from smi_shop_info;
 	</select>
 	<delete id="delShopById" parameterType="Integer">
 		delete from smi_shop_info
-		 where id=#{id};
+		where id=#{id};
 	</delete>
-	<delete id="delShopByIds" parameterType="java.util.List" >
+	<delete id="delShopByIds" parameterType="Integer">
 		delete from smi_shop_info
-		 where id in (#{ids});
+		where id in
+		<foreach item="item" index="index" collection="ids" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+		;
 	</delete>
 </mapper>

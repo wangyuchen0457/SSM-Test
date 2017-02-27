@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.xxx.model.SmiShopInfo;
 
 /**
- * Ó°ÔºµêÆÌĞÅÏ¢Ó³Éä¹ØÏµ Êı¾İÊµÀı»¯½Ó¿Ú
+ * å½±é™¢åº—é“ºä¿¡æ¯æ˜ å°„å…³ç³» æ•°æ®å®ä¾‹åŒ–æ¥å£
  * 
  * @author author
  * @date 2016/02/16
@@ -15,12 +15,12 @@ import com.xxx.model.SmiShopInfo;
 public interface SmiShopInfoMapper {
 
 	/**
-	 * ¸ù¾İÃÅµê±àÂëºÍÃÜÂë»ñÈ¡ÃÅµêĞÅÏ¢
+	 * æ ¹æ®é—¨åº—ç¼–ç å’Œå¯†ç è·å–é—¨åº—ä¿¡æ¯
 	 * 
 	 * @param password
-	 *            ÃÅµêÃÜÂë
+	 *            é—¨åº—å¯†ç 
 	 * @param shopNo
-	 *            ÃÅµê±àÂë
+	 *            é—¨åº—ç¼–ç 
 	 */
 	public SmiShopInfo getByNoAndPwd(
 			@Param("password") String password, 

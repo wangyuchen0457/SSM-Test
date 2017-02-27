@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Ó°ÔºµêÆÌĞÅÏ¢±í
+ * å½±é™¢åº—é“ºä¿¡æ¯è¡¨
  * 
  * @author author
  * @date 2016/02/16
