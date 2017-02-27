@@ -1,5 +1,7 @@
 package com.xxx.service.impl;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,34 @@ public class SmiShopInfoService implements ISmiShopInfoService {
 		}
 
 		return shopInfoMapper.getByNoAndPwd(password, shopNo);
+	}
+
+	@Override
+	public void addShopInfo(SmiShopInfo smiShopInfo) throws Exception {
+		String shopNo=smiShopInfo.getShopNo();
+		String shopName=smiShopInfo.getShopName();
+		String shopType=smiShopInfo.getShopType();
+		String shopPassword=smiShopInfo.getShopPassword();
+		String note=smiShopInfo.getNote();
+		shopInfoMapper.addShop(shopNo, shopName, shopPassword, shopType, note);
+	}
+
+	@Override
+	public List<SmiShopInfo> showAll() throws Exception {
+		
+		return shopInfoMapper.selectAll();
+	}
+
+	@Override
+	public void delById(Integer id) throws Exception {
+		
+		shopInfoMapper.delShopById(id);
+	}
+
+	@Override
+	public void delByIds(Integer[] ids) throws Exception {
+		
+		shopInfoMapper.delShopByIds(ids);
 	}
 
 }

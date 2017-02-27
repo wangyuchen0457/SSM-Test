@@ -20,5 +20,22 @@
 		from smi_shop_info
 		where shop_no = #{shopNo,jdbcType=VARCHAR} and shop_password = #{password,jdbcType=VARCHAR}
 	</select>
-
+	
+	<!-- 插入数据库表数据 -->
+	<insert id="addShop" parameterType="String">
+		insert into smi_shop_info 
+		set shop_no=#{shopNo,jdbcType=VARCHAR},shop_name=#{shopName,jdbcType=VARCHAR},shop_type=#{shopType,jdbcType=VARCHAR},shop_password=#{shopPassword,jdbcType=VARCHAR},note=#{note,jdbcType=VARCHAR};
+		<!-- (shop_no,shop_name,shop_type,shop_password,note) value (#{shopNo},#{shopName},#{shopType},#{shopPassword},#{note}) -->
+	</insert>
+	<select id="selectAll"  resultMap="BaseResultMap">
+		select * from smi_shop_info;
+	</select>
+	<delete id="delShopById" parameterType="Integer">
+		delete from smi_shop_info
+		 where id=#{id};
+	</delete>
+	<delete id="delShopByIds" parameterType="java.util.List" >
+		delete from smi_shop_info
+		 where id in (#{ids});
+	</delete>
 </mapper>

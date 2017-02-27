@@ -1,4 +1,4 @@
-//³õÊ¼»¯Êı¾İ
+//åˆå§‹åŒ–æ•°æ®
 $(document).ready(function() {
 	var username = getLocalStorage("username");
 	if (!isNull(username)) {
@@ -6,22 +6,22 @@ $(document).ready(function() {
 	}
 });
 
-//µÇÂ¼
+//ç™»å½•
 $("#btnLogin").click(function() {
 	var username = $('#username').val();
 	var password = $('#password').val();
 	if (isNull(username)) {
-		showmsg("ÇëÊäÈëÃÅµê±àºÅ");
+		showmsg("è¯·è¾“å…¥é—¨åº—ç¼–å·");
 		return false;
 	}
 	if (isNull(password)) {
-		showmsg("ÇëÊäÈëÄúµÄÃÜÂë");
+		showmsg("è¯·è¾“å…¥æ‚¨çš„å¯†ç ");
 		return false;
 	}
-	//¼ÓÃÜ
+	//åŠ å¯†
 	//password = $.md5(password);
 
-	showLoadingDialog("µÇÂ¼ÖĞ£¬ÇëÉÔºó...");
+	showLoadingDialog("ç™»å½•ä¸­ï¼Œè¯·ç¨å...");
 
 	$.ajax({
 		type : "POST",
@@ -33,23 +33,24 @@ $("#btnLogin").click(function() {
 		},
 		error : function() {
 			hideLoadingDialog();
-			showmsg("µÇÂ¼Òì³£");
+			showmsg("ç™»å½•å¼‚å¸¸");
 		},
-		success : function(res) {
+		success : function(vo) {
 			hideLoadingDialog();
-			if (!isNull(res)) {
+			if (!isNull(vo)) {
 				//console.log(res.shopNo);
 				//console.log(res);
 				clearLocalStorage();
-				setLocalStorage("username", res.shopNo);//ÓÃÓÚ¼Ç×¡ÓÃ»§Ãû£¬²»Çå³ı
-				setLocalStorage("shopNo", res.shopNo);
-				setLocalStorage("shopId", res.id);
-				setLocalStorage("shopInfo", JSON.stringify(res));
+				setLocalStorage("username", vo.shopNo);//ç”¨äºè®°ä½ç”¨æˆ·åï¼Œä¸æ¸…é™¤
+				setLocalStorage("shopNo", vo.shopNo);
+				setLocalStorage("shopId", vo.id);
+				setLocalStorage("shopInfo", JSON.stringify(vo));
 
-				showmsg("¹§Ï²Äã£¬µÇÂ¼³É¹¦£¡");
+				showmsg("æ­å–œä½ ï¼Œç™»å½•æˆåŠŸï¼");
+				window.location.href=ctx + '/main.do';
 
 			} else {
-				showmsg("ÓÃ»§Ãû»òÃÜÂë´íÎó");
+				showmsg("ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯");
 			}
 		}
 	});
