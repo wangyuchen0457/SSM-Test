@@ -30,4 +30,5 @@ public interface ISmiShopInfoService {
 	//批量删除
 	public void delByIds(Integer[] ids) throws Exception;
 	public void updateById(SmiShopInfo smiShopInfo) throws Exception;
+	public void updateByIds(SmiShopInfo shopInfo)throws Exception;
 }

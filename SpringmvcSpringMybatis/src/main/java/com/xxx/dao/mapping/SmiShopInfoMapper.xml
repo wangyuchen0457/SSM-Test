@@ -57,7 +57,24 @@
 	</delete>
 	<update id="updateById" parameterType="SmiShopInfo">
 		update smi_shop_info
-		set shop_no=#{shopNo,jdbcType=VARCHAR},shop_name=#{shopName,jdbcType=VARCHAR},shop_type=#{shopType,jdbcType=VARCHAR},shop_password=#{shopPassword,jdbcType=VARCHAR},note=#{note,jdbcType=VARCHAR}
+		set shop_no=#{shopNo,jdbcType=VARCHAR},
+		shop_name=#{shopName,jdbcType=VARCHAR},
+		shop_type=#{shopType,jdbcType=VARCHAR},
+		note=#{note,jdbcType=VARCHAR}
 		where id = #{id};
+	</update>
+	<update id="updateByIds" parameterType="SmiShopInfo">
+		update smi_shop_info
+		<trim prefix="set" suffixOverrides=",">
+			<if test="shopNo!='' and shopNo!=null">shop_no=#{shopNo,jdbcType=VARCHAR},</if>
+			<if test="shopName!='' and shopName!=null">shop_name=#{shopName,jdbcType=VARCHAR},</if>
+			<if test="shopType!='' and shopType!=null">shop_type=#{shopType,jdbcType=VARCHAR},</if>
+			<if test="note!='' and note!=null">note=#{note,jdbcType=VARCHAR},</if>
+		</trim>
+			where id in
+		<foreach item="item" index="index" collection="ids" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
 	</update>
 </mapper>

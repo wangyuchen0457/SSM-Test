@@ -4,7 +4,7 @@ $(document).ready(function() {
 	$("#shopType").attr("datatype", "Require").attr("msg", "请填写商店类型");
 	$("#note").attr("datatype", "Require").attr("msg", "请填写商店备注");
 	$("#shopPassword").attr("datatype", "Require").attr("msg", "请填写商店密码");
-	$(document.forms[0]).submit(function() {
+	$(document.bodys[0]).submit(function() {
 		return Validator.Validate(this, 4);
 	});
 });

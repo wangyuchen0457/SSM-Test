@@ -44,7 +44,13 @@ public interface SmiShopInfoMapper {
 			@Param("id") Integer id,
 			@Param("shopNo") String shopNo,
 			@Param("shopName") String shopName,
-			@Param("shopPassword") String shopPassword,
 			@Param("shopType") String shopType,
 			@Param("note") String note);
+	public void updateByIds(
+			@Param("ids") Integer[] ids,
+			@Param("shopNo") String shopNo,
+			@Param("shopName") String shopName,
+			@Param("shopType") String shopType,
+			@Param("note") String note);
+			
 }

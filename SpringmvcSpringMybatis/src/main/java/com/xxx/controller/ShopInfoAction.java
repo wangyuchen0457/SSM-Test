@@ -30,7 +30,7 @@ public class ShopInfoAction {
 
 	@Autowired
 	private ISmiShopInfoService smiShopInfoService;
-
+	private Integer[] upIds;
 	ShopInfoVO vo = new ShopInfoVO();
 
 	/**
@@ -113,7 +113,7 @@ public class ShopInfoAction {
 		return "redirect:/show.do";
 	}
 
-	// 根据id删除产品
+	// 根据ids删除产品
 	@RequestMapping(value = "/delByIds.do")
 	public String delProductByIds(@RequestParam("checked") Integer[] ids, HttpServletRequest request) throws Exception {
 		smiShopInfoService.delByIds(ids);
@@ -147,5 +147,30 @@ public class ShopInfoAction {
 		smiShopInfoService.updateById(shopInfo);
 		logger.info(shopInfo.getShopName() + "[" + shopNo + "]：修改成功");
 		return shopInfo;
+	}
+
+	//批量修改页面跳转
+	@RequestMapping(value = "/updateMore.do")
+	public String updateMore(@RequestParam("checked") Integer[] ids, HttpServletRequest request) throws Exception {
+		upIds=ids;
+		logger.info("ids成功");
+		return "update";
+	}
+	//批量修改
+	@RequestMapping(value = "/updateByIds.do")
+	public String updateByIds(HttpServletRequest request,String shopNo, String shopName,
+			String shopType, String note) throws Exception {
+		if ((""==shopName||"".equals(shopName))&&(""==shopNo||"".equals(shopNo))&&(""==note||"".equals(note))&&(""==shopType||"".equals(shopType))) {
+			return "请至少修改一项";
+		}
+		SmiShopInfo shopInfo = new SmiShopInfo();
+		shopInfo.setIds(upIds);
+		shopInfo.setNote(note);
+		shopInfo.setShopName(shopName);
+		shopInfo.setShopNo(shopNo);
+		shopInfo.setShopType(shopType);
+		smiShopInfoService.updateByIds(shopInfo);
+		logger.info("批量修改成功");
+		return "redirect:/show.do";
 	}
 }

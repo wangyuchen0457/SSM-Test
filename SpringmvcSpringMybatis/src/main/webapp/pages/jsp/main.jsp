@@ -39,9 +39,11 @@ ${message}
 	</c:forEach> 
 </table>
 <input type="submit" id="delBtn" name="delBtn" value="删除">
+<input type="submit" id="updateBtn" name="updateBtn" value="修改">
 	<script src="pages/script/jquery.min.js"></script>
 	<script src="pages/script/md5.js"></script>
 	<script src="pages/script/common.js"></script>
 	<script src="pages/script/delIds.js"></script>
+	<script src="pages/script/updateMore.js"></script>
 </body>
 </html>

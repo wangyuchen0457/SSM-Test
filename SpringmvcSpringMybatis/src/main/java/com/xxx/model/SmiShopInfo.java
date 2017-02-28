@@ -17,6 +17,8 @@ public class SmiShopInfo implements Serializable {
 
 	private static final long serialVersionUID = -205189814706545519L;
 
+	private Integer[] ids;
+
 	private Integer id;
 
 	private String shopNo;

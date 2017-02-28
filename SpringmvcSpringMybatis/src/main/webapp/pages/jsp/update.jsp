@@ -32,12 +32,12 @@
 					value="Update ShopInfo" />
 			</div>
 		</fieldset>
-		<script src="pages/script/jquery.min.js"></script>
-		<script src="pages/script/md5.js"></script>
-		<script src="pages/script/common.js"></script>
-		<script src="pages/script/myValidate.js"></script>
-		<script src="pages/script/validator.js"></script>
-		<script src="pages/script/update.js"></script>
+		<script src="/SpringmvcSpringMybatis/pages/script/jquery.min.js"></script>
+		<script src="/SpringmvcSpringMybatis/pages/script/md5.js"></script>
+		<script src="/SpringmvcSpringMybatis/pages/script/common.js"></script>
+		<script src="/SpringmvcSpringMybatis/pages/script/myValidate.js"></script>
+		<script src="/SpringmvcSpringMybatis/pages/script/validator.js"></script>
+		<script src="/SpringmvcSpringMybatis/pages/script/update.js"></script>
 	</div>
 </body>
 </html>
