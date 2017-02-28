@@ -112,11 +112,40 @@ public class ShopInfoAction {
 		smiShopInfoService.delById(id);
 		return "redirect:/show.do";
 	}
+
 	// 根据id删除产品
-		@RequestMapping(value = "/delByIds.do")
-		public String delProductByIds(@RequestParam("checked") Integer []ids,HttpServletRequest request) throws Exception {
-			smiShopInfoService.delByIds(ids);
-			
-			return "redirect:/show.do";
-		}
+	@RequestMapping(value = "/delByIds.do")
+	public String delProductByIds(@RequestParam("checked") Integer[] ids, HttpServletRequest request) throws Exception {
+		smiShopInfoService.delByIds(ids);
+
+		return "redirect:/show.do";
+	}
+
+	// 修改页面跳转
+	@RequestMapping(value = "/updateOne.do")
+	public String updateOne(@RequestParam Integer id, HttpServletRequest request) throws Exception {
+		SmiShopInfo shopInfo = smiShopInfoService.getShopById(id);
+		vo.setId(shopInfo.getId());
+		vo.setShopNo(shopInfo.getShopNo());
+		vo.setShopName(shopInfo.getShopName());
+		vo.setShopType(shopInfo.getShopType());
+		vo.setNote(shopInfo.getNote());
+		request.setAttribute("vo", vo);
+		return "update";
+	}
+
+	// 修改一条数据
+	@RequestMapping(value = "/updateById.do")
+	public @ResponseBody SmiShopInfo updateById(HttpServletRequest request, Integer id, String shopNo, String shopName,
+			String shopType, String note) throws Exception {
+		SmiShopInfo shopInfo = new SmiShopInfo();
+		shopInfo.setId(id);
+		shopInfo.setNote(note);
+		shopInfo.setShopName(shopName);
+		shopInfo.setShopNo(shopNo);
+		shopInfo.setShopType(shopType);
+		smiShopInfoService.updateById(shopInfo);
+		logger.info(shopInfo.getShopName() + "[" + shopNo + "]：修改成功");
+		return shopInfo;
+	}
 }

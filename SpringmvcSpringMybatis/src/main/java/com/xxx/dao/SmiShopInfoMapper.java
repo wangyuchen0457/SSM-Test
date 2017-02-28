@@ -25,16 +25,26 @@ public interface SmiShopInfoMapper {
 	public SmiShopInfo getByNoAndPwd(
 			@Param("password") String password, 
 			@Param("shopNo") String shopNo);
-	
+	public SmiShopInfo getById(@Param("id") Integer id);
+	//增加
 	public void addShop(
 			@Param("shopNo") String shopNo,
 			@Param("shopName") String shopName,
 			@Param("shopPassword") String shopPassword,
 			@Param("shopType") String shopType,
 			@Param("note") String note);
-	
+	//查看所有
 	public List<SmiShopInfo> selectAll();
-	
+	//单个删除
 	public void delShopById(@Param("id") Integer id);
+	//批量删除
 	public void delShopByIds(@Param("ids") Integer[] ids);
+	//修改一个
+	public void updateById(
+			@Param("id") Integer id,
+			@Param("shopNo") String shopNo,
+			@Param("shopName") String shopName,
+			@Param("shopPassword") String shopPassword,
+			@Param("shopType") String shopType,
+			@Param("note") String note);
 }

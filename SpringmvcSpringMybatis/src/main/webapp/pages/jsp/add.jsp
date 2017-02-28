@@ -7,6 +7,8 @@
 <title>增加商店信息</title>
 </head>
 <body>
+	<script src="pages/script/myValidate.js"></script>
+	<script src="pages/script/validator.js"></script>
 <form action="/SpringmvcSpringMybatis/add.do" method="post">
 			<fieldset>
 				<legend>Add a shop info</legend>
@@ -17,10 +19,10 @@
 				<input type="text" id="shopNo" name="shopNo" value="" tabindex="2"/>
 				<br/>
 				<label for="ShopType">ShopType:</label>
-				<input type="text" id="ShopType" name="ShopType" value="" tabindex="3"/>
+				<input type="text" id="shopType" name="shopType" value="" tabindex="3"/>
 				<br/>
 				<label for="ShopPassword">ShopPassword:</label>
-				<input type="text" id="ShopPassword" name="ShopPassword" value="" tabindex="4"/>
+				<input type="text" id="shopPassword" name="shopPassword" value="" tabindex="4"/>
 				<br/>
 				<label for="Note">Note:</label>
 				<input type="text" id="Note" name="Note" value="" tabindex="5"/>

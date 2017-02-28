@@ -31,7 +31,7 @@ ${message}
 		<td>${vo.shopType}</td>
 		<td>${vo.note}</td>
 		<td width="120">
-			<a href="product_modiform.action?id=${vo.id}">修改</a>&nbsp;
+			<a href="updateOne.do?id=${vo.id}">修改</a>&nbsp;
 			<a href="delById.do?id=${vo.id}">删除</a>
 			
 		</td>

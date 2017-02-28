@@ -22,7 +22,13 @@
 		where shop_no = #{shopNo,jdbcType=VARCHAR} and
 		shop_password = #{password,jdbcType=VARCHAR}
 	</select>
-
+	<!-- 根据ID门店信息 -->
+	<select id="getById" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from smi_shop_info
+		where id = #{id};
+	</select>
 	<!-- 插入数据库表数据 -->
 	<insert id="addShop" parameterType="String">
 		insert into smi_shop_info
@@ -30,13 +36,16 @@
 		shop_no=#{shopNo,jdbcType=VARCHAR},shop_name=#{shopName,jdbcType=VARCHAR},shop_type=#{shopType,jdbcType=VARCHAR},shop_password=#{shopPassword,jdbcType=VARCHAR},note=#{note,jdbcType=VARCHAR};
 		<!-- (shop_no,shop_name,shop_type,shop_password,note) value (#{shopNo},#{shopName},#{shopType},#{shopPassword},#{note}) -->
 	</insert>
+	<!-- 批量查询 -->
 	<select id="selectAll" resultMap="BaseResultMap">
 		select * from smi_shop_info;
 	</select>
+	<!-- 单个删除 -->
 	<delete id="delShopById" parameterType="Integer">
 		delete from smi_shop_info
 		where id=#{id};
 	</delete>
+	<!-- 批量删除 -->
 	<delete id="delShopByIds" parameterType="Integer">
 		delete from smi_shop_info
 		where id in
@@ -46,4 +55,9 @@
 		</foreach>
 		;
 	</delete>
+	<update id="updateById" parameterType="SmiShopInfo">
+		update smi_shop_info
+		set shop_no=#{shopNo,jdbcType=VARCHAR},shop_name=#{shopName,jdbcType=VARCHAR},shop_type=#{shopType,jdbcType=VARCHAR},shop_password=#{shopPassword,jdbcType=VARCHAR},note=#{note,jdbcType=VARCHAR}
+		where id = #{id};
+	</update>
 </mapper>

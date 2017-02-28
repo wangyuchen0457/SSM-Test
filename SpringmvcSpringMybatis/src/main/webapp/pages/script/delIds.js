@@ -1,6 +1,3 @@
-/**
- * 
- */
 // 删除
 $("#delBtn").click(function() {
 	var checked = [];
@@ -25,6 +22,4 @@ $("#delBtn").click(function() {
 			alert("删除失败")
 		}
 	});
-	// alert(checked);
-
 });

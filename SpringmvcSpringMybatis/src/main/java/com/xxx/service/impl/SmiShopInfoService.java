@@ -35,6 +35,12 @@ public class SmiShopInfoService implements ISmiShopInfoService {
 	}
 
 	@Override
+	public SmiShopInfo getShopById(Integer id) throws Exception {
+	
+		return shopInfoMapper.getById(id);
+	}
+
+	@Override
 	public void addShopInfo(SmiShopInfo smiShopInfo) throws Exception {
 		String shopNo=smiShopInfo.getShopNo();
 		String shopName=smiShopInfo.getShopName();
@@ -60,6 +66,18 @@ public class SmiShopInfoService implements ISmiShopInfoService {
 	public void delByIds(Integer[] ids) throws Exception {
 		
 		shopInfoMapper.delShopByIds(ids);
+	}
+
+	@Override
+	public void updateById(SmiShopInfo smiShopInfo) throws Exception {
+		Integer id=smiShopInfo.getId();
+		String shopNo=smiShopInfo.getShopNo();
+		String shopName=smiShopInfo.getShopName();
+		String shopType=smiShopInfo.getShopType();
+		String shopPassword=smiShopInfo.getShopPassword();
+		String note=smiShopInfo.getNote();
+		shopInfoMapper.updateById(id, shopNo, shopName, shopPassword, shopType, note);
+		
 	}
 
 }
