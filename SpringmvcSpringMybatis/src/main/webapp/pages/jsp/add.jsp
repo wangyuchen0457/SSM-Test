@@ -21,15 +21,12 @@
 				<label for="ShopType">ShopType:</label>
 				<input type="text" id="shopType" name="shopType" value="" tabindex="3"/>
 				<br/>
-				<label for="ShopPassword">ShopPassword:</label>
-				<input type="text" id="shopPassword" name="shopPassword" value="" tabindex="4"/>
-				<br/>
 				<label for="Note">Note:</label>
-				<input type="text" id="Note" name="Note" value="" tabindex="5"/>
+				<input type="text" id="Note" name="Note" value="" tabindex="4"/>
 				<br/>
 				<div id="buttons">
-				<input id="reset" type="reset" tabindex="6"/>
-				<input id="submit" type="submit" tabindex="7" value="Add Shop Info"/>
+				<input id="reset" type="reset" tabindex="5"/>
+				<input id="submit" type="submit" tabindex="6" value="Add Shop Info"/>
 				</div>
 			</fieldset>
 		</form>

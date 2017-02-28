@@ -1,7 +1,5 @@
 package com.xxx.service;
 
-import java.util.List;
-
 import com.xxx.model.SmiShopInfo;
 
 /**
@@ -20,15 +18,4 @@ public interface ISmiShopInfoService {
 	 * @throws Exception 
 	 */
 	public SmiShopInfo getShopByNoAndPwd(String shopNo, String password) throws Exception;
-	public SmiShopInfo getShopById(Integer id) throws Exception;
-	//增加产品
-	public void addShopInfo(SmiShopInfo smiShopInfo) throws Exception;
-	//查看所有
-	public List<SmiShopInfo> showAll() throws Exception;
-	//单个删除
-	public void delById(Integer id) throws Exception;
-	//批量删除
-	public void delByIds(Integer[] ids) throws Exception;
-	public void updateById(SmiShopInfo smiShopInfo) throws Exception;
-	public void updateByIds(SmiShopInfo shopInfo)throws Exception;
 }

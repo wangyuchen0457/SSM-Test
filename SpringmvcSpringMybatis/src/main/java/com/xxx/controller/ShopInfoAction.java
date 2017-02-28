@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xxx.controller.valueobject.ShopInfoVO;
 import com.xxx.model.SmiShopInfo;
+import com.xxx.service.IShopInfoSelfService;
 import com.xxx.service.ISmiShopInfoService;
 
 /**
@@ -28,6 +29,8 @@ public class ShopInfoAction {
 
 	private Logger logger = Logger.getLogger(this.getClass());
 
+	@Autowired
+	private IShopInfoSelfService shopInfoSelfService;
 	@Autowired
 	private ISmiShopInfoService smiShopInfoService;
 	private Integer[] upIds;
@@ -87,7 +90,7 @@ public class ShopInfoAction {
 		smiShopInfo.setShopNo(shopInfoVO.getShopNo());
 		smiShopInfo.setShopPassword(shopInfoVO.getShopPassword());
 		smiShopInfo.setShopType(shopInfoVO.getShopType());
-		smiShopInfoService.addShopInfo(smiShopInfo);
+		shopInfoSelfService.addShopInfo(smiShopInfo);
 		request.setAttribute("message", "The shopinfo was successfully added!");
 		// redirectAttributes.addFlashAttribute("message", "The shopinfo was
 		// successfully added!");
@@ -97,7 +100,7 @@ public class ShopInfoAction {
 	// 查看所有信息
 	@RequestMapping(value = "/show.do")
 	public String showProduct(HttpServletRequest request) throws Exception {
-		List<SmiShopInfo> voList = smiShopInfoService.showAll();
+		List<SmiShopInfo> voList = shopInfoSelfService.showAll();
 		request.setAttribute("voList", voList);
 		/*
 		 * ModelAndView mView=new ModelAndView("ProductList");
@@ -109,14 +112,14 @@ public class ShopInfoAction {
 	// 根据id删除产品
 	@RequestMapping(value = "/delById.do")
 	public String delProductById(@RequestParam Integer id, HttpServletRequest request) throws Exception {
-		smiShopInfoService.delById(id);
+		shopInfoSelfService.delById(id);
 		return "redirect:/show.do";
 	}
 
 	// 根据ids删除产品
 	@RequestMapping(value = "/delByIds.do")
 	public String delProductByIds(@RequestParam("checked") Integer[] ids, HttpServletRequest request) throws Exception {
-		smiShopInfoService.delByIds(ids);
+		shopInfoSelfService.delByIds(ids);
 
 		return "redirect:/show.do";
 	}
@@ -124,7 +127,7 @@ public class ShopInfoAction {
 	// 修改页面跳转
 	@RequestMapping(value = "/updateOne.do")
 	public String updateOne(@RequestParam Integer id, HttpServletRequest request) throws Exception {
-		SmiShopInfo shopInfo = smiShopInfoService.getShopById(id);
+		SmiShopInfo shopInfo = shopInfoSelfService.getShopById(id);
 		vo.setId(shopInfo.getId());
 		vo.setShopNo(shopInfo.getShopNo());
 		vo.setShopName(shopInfo.getShopName());
@@ -144,7 +147,7 @@ public class ShopInfoAction {
 		shopInfo.setShopName(shopName);
 		shopInfo.setShopNo(shopNo);
 		shopInfo.setShopType(shopType);
-		smiShopInfoService.updateById(shopInfo);
+		shopInfoSelfService.updateById(shopInfo);
 		logger.info(shopInfo.getShopName() + "[" + shopNo + "]：修改成功");
 		return shopInfo;
 	}
@@ -169,7 +172,7 @@ public class ShopInfoAction {
 		shopInfo.setShopName(shopName);
 		shopInfo.setShopNo(shopNo);
 		shopInfo.setShopType(shopType);
-		smiShopInfoService.updateByIds(shopInfo);
+		shopInfoSelfService.updateByIds(shopInfo);
 		logger.info("批量修改成功");
 		return "redirect:/show.do";
 	}
